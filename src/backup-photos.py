@@ -35,14 +35,16 @@ def SynchronizeFolders(sourceParentFolder, destinationParentFolder):
         if sourceSubFolder < destinationSubFolders[indexDestSubFolder]:
             continue
         elif sourceSubFolder == destinationSubFolders[indexDestSubFolder]:
-            BackupOneFolder(sourceSubFolder, destinationSubFolders[indexDestSubFolder])
+            BackupOneFolder(sourceParentFolder + "/" + sourceSubFolder, \
+            destinationParentFolder + "/" + destinationSubFolders[indexDestSubFolder])
         else:
             while(sourceSubFolder > destinationSubFolders[indexDestSubFolder]):
                 indexDestSubFolder = indexDestSubFolder + 1
             if indexDestSubFolder >= len(destinationSubFolders):
                 break
             if sourceSubFolder == destinationSubFolders[indexDestSubFolder]:
-                BackupOneFolder(sourceSubFolder, destinationSubFolders[indexDestSubFolder])
+                BackupOneFolder(sourceParentFolder + "/" + sourceSubFolder, \
+                destinationParentFolder + "/" + destinationSubFolders[indexDestSubFolder])
 
 
 # For test
